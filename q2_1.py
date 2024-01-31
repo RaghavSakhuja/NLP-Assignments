@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+from nltk import FreqDist, KneserNeyProbDist
+from nltk.util import bigrams
 
 class BigramLM:
     def __init__(self):
@@ -48,11 +50,57 @@ class BigramLM:
         df=pd.DataFrame(self.co_matrix,columns=self.uniquewords,index=self.uniquewords)
         print(df)
         
+    def Laplace_learn(self,k=1):
+        for i in range(len(self.uniquewords)):
+            x=[]
+            
+            for j in range(len(self.uniquewords)):
+                if self.uniquewords[i] in self.bigrams:
+                    if self.uniquewords[j] in self.bigrams[self.uniquewords[i]]:
+                        numerator = self.bigrams[self.uniquewords[i]][self.uniquewords[j]] + k #Reference for the formula Notes and https://www.youtube.com/watch?v=gCI-ZC7irbY
+                        denominator = self.unigrams[self.uniquewords[i]] + (k*len(self.uniquewords))
+                        x.append(numerator/denominator)
+                    
+                    else:
+                        x.append(k / (self.unigrams[self.uniquewords[i]] + (k * len(self.uniquewords))))
+                else:
+                    x.append(k / (k * len(self.uniquewords)))
+            self.co_matrix.append(x)
+        df=pd.DataFrame(self.co_matrix,columns=self.uniquewords,index=self.uniquewords)
+        print(df)
+        
+        
+        
+        
         # print(self.unigrams)
         # print(self.uniquewords)
         # for i in self.co_matrix:
         #     print(i)
         # print("yes")
+        
+    def KneserNey_learn(self,d=0.75):
+        for i in range(len(self.uniquewords)):
+            x=[]
+            
+            for j in range(len(self.uniquewords)):
+                if self.uniquewords[i] in self.bigrams:
+                    if self.uniquewords[j] in self.bigrams[self.uniquewords[i]]:
+                        numerator = max(self.bigrams[self.uniquewords[i]][self.uniquewords[j]] - d,0) #Reference for the formula Lecture Notes
+                        denominator = self.unigrams[self.uniquewords[i]]
+                        continuation_count = sum(1 for k in self.bigrams if self.uniquewords[j] in self.bigrams[k])
+                        continuation_prob = continuation_count / len(self.bigrams)
+                        
+                        kneser_ney_prob = numerator / denominator + continuation_prob
+                        x.append(kneser_ney_prob) 
+                        # x.append(self.bigrams[self.uniquewords[i]][self.uniquewords[j]])
+                    else:
+                        x.append(0)
+                else:
+                    x.append(0)
+            self.co_matrix.append(x)
+        df=pd.DataFrame(self.co_matrix,columns=self.uniquewords,index=self.uniquewords)
+        print(df)
+
     
     def generate_sentences(self):
         pass
@@ -79,5 +127,8 @@ class BigramLM:
 
 b1=BigramLM()
 b1.add_data("corpus.txt")
-b1.learn()
+# b1.learn()
+# b1.KneserNey_learn()
+# b1.Laplace_learn()
+b1.kneser_ney_learn_nltk()
 print(b1.findsentenceprob("i stand here i feel empty a class post count link href http mooshilu"))
