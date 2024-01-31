@@ -1,4 +1,6 @@
 from collections import Counter
+import re
+
 
 class Tokenizer:
     def __init__(self):
@@ -95,19 +97,49 @@ class Tokenizer:
             for pair in self.merges:
                 final_vocab[word.replace(''.join(pair), '')] = self.vocab[word]
         self.vocab = final_vocab
+
+    def fold_case(self,sentence):
+        return sentence.lower()
     
-    def tokenize(self, sample):
-        tokens = []
-        for word in sample.split():
-            tokens.extend(self.split_word(word))
-        return tokens
+    def remove_punctuations(self,sentence):
+        punctuation_removal_regex = r'[^\w\s]'
+        sentence_punctuation_removed = re.sub(punctuation_removal_regex,'',sentence)
+        sentence_punctuation_removed = sentence_punctuation_removed.strip()
+        return sentence_punctuation_removed
     
-    def split_word(self, word):
-        # Split a word based on the learned rules
-        for pair in self.merges:
-            if ''.join(pair) in word:
-                return word.split(''.join(pair))
-        return [word]
+    def get_character_list(self,sentence):
+        word_list = sentence.split(" ")
+        character_list=[]
+        for word in word_list:
+            lst=[]
+            for char in word:
+                lst.append(char)
+            lst.append(self.eol)
+            character_list.append(lst)
+        return character_list
+    
+    # Function for tokenizing the string
+    def tokenize(self, sentence,merge_rules):
+        # Folding the case of the sentence
+        sentence_case_folded = self.fold_case(sentence)
+
+        # Removing punctuations and white spaces at the ends of the string
+        sentence_punctuation_removed = self.remove_punctuations(sentence_case_folded)    
+       
+        # Converting string into a list of characters
+        character_list = self.get_character_list(sentence_punctuation_removed)
+    
+        # Tokenizing the string
+        finalTokenizedList=character_list.copy()
+        for word_index in range(len(finalTokenizedList)):
+            for rule in merge_rules:
+                for i in range(0,len(finalTokenizedList[word_index])-1):
+                    if finalTokenizedList[word_index][i]==rule[0] and finalTokenizedList[word_index][i+1]==rule[1]:
+                        mergedWord = [finalTokenizedList[word_index][i] + finalTokenizedList[word_index][i+1]]
+                        word_before = finalTokenizedList[word_index][0:i]
+                        word_after = finalTokenizedList[word_index][i+2:]
+                        finalTokenizedList[word_index] = word_before + mergedWord + word_after
+        return  finalTokenizedList
 
 # Example Usage
 corpus = ["low", "lower", "newest", "widest","low","new","wider"]
@@ -127,9 +159,28 @@ with open("merge_rules.txt", "w") as merge_file:
     for pair in tokenizer.merges:
         merge_file.write(f"{pair[0]},{pair[1]}\n")
 
-# Tokenize test samples
-test_samples = ["lowest", "newer", "wider"]
+# Getting the merge rules from the text file
+merge_rules = []
+with open("merge_rules.txt","r") as merge_rules_file:
+    for rule in merge_rules_file:
+        word_0,word_1 = rule.split(",")
+        word_1 = word_1[:-1]
+        merge_rules.append((word_0,word_1))
+
+# Reading the test samples from the text file
+test_samples =  []
+with open("Test_Samples.txt","r") as test_file:
+    for line in test_file:
+        line = line[:-1]
+        test_samples.append(line)
+
+# Creating the tokens and appending to the tokenized samples file
 with open("tokenized_samples.txt", "w") as tokenized_file:
     for sample in test_samples:
-        tokens = tokenizer.tokenize(sample)
-        tokenized_file.write(",".join(tokens) + "\n")
+        sample_tokens = tokenizer.tokenize(sample,merge_rules)
+        tokens = []
+        for i in sample_tokens:
+            for j in i:
+                tokens.append(j)
+        tokens_str = ",".join(tokens)
+        tokenized_file.write(f"{tokens_str}\n")
