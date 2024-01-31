@@ -1,21 +1,22 @@
+from collections import Counter
+
 class Tokenizer:
     def __init__(self):
-        self.vocab = {}
-        self.merges = {}
+        self.vocab = set()
+        self.merges = []
+        self.eol='/'
     
     def learn_vocabulary(self, corpus, num_merges):
         # Initialize vocabulary with characters
 
-        self.vocab = {char: 1 for word in corpus for char in word}
-        self.vocab['/'] = len(corpus)
+        self.vocab = {char for word in corpus for char in word}
+        self.vocab.add(self.eol)
 
-        new_corpus = self.add_end_of_word_symbol(corpus)
-
-        separated_corpus =self.separated_corpus(new_corpus)
+        frequency_corpus = self.process_corpus(corpus)
         
-        for merge in range(num_merges):
+        for i in range(num_merges):
             # Calculate pair frequencies
-            pairs = self.get_pair_frequencies(separated_corpus)
+            pairs = self.get_pair_frequencies(frequency_corpus)
             
             if not pairs:
                 break
@@ -24,51 +25,65 @@ class Tokenizer:
             most_frequent_pair = max(pairs, key=pairs.get)
             
             # Merge the most frequent pair
-            separated_corpus=self.merge_pair(most_frequent_pair,separated_corpus)
+            frequency_corpus=self.merge_pair(most_frequent_pair,frequency_corpus)
         
         # Generate vocabulary after merges
-        self.generate_vocab_after_merges()
+        # self.generate_vocab_after_merges()
     
-    def add_end_of_word_symbol(self, corpus):
-        return [word + "/" for word in corpus]
 
-    def separated_corpus(self, corpus):
-        return [list(word) for word in corpus]
+    def process_corpus(self,corpus):
+        result = []
 
-    def get_pair_frequencies(self, separated_corpus):
+        # Adding end-of-word symbol
+        result = [word + "/" for word in corpus]
+
+        # Separating the corpus into lists of characters
+        result = [list(word) for word in result]
+
+        # Counting character frequencies
+        freq = {}
+        for word in result:
+            freq[" ".join(word)] = freq.get(" ".join(word), 0) + 1
+
+        return freq
+
+    def get_pair_frequencies(self, frequencies_corpus):
         pair_freq = {}
-        for word in separated_corpus:
-            pairs = [(word[i], word[i + 1]) for i in range(len(word) - 1)]
-            for pair in pairs:
-                pair_freq[pair] = pair_freq.get(pair, 0) + 1
+        for word_str in frequencies_corpus:
+            word = word_str.split()
+            multiple=frequencies_corpus[word_str]
+            for i in range(len(word)-1):
+                pair = (word[i], word[i + 1])
+                pair_freq[pair] = pair_freq.get(pair, 0) + multiple
         return pair_freq
     
-    def merge_pair(self, pair,separated_corpus):
+    def merge_pair(self, pair,frequency_corpus):
         # Update vocabulary after merging the pair
 
-        self.vocab[''.join(pair)] = self.vocab[pair[0]] + self.vocab[pair[1]]
+        # self.vocab[''.join(pair)] = self.vocab[pair[0]] + self.vocab[pair[1]]
         # del self.vocab[pair[0]]
         # del self.vocab[pair[1]]
+        self.vocab.add(''.join(pair))
 
         # Update merges
-        self.merges[pair] = self.vocab[''.join(pair)]
+        self.merges.append(pair)
         
-        #update separated corpus after merging the pair
-        new_corpus = []
-        for word in separated_corpus:
-            new_word = []
+        #update frequency corpus after merging the pair
+        new_corpus={}
+        for word_str in frequency_corpus:
+            word=word_str.split()
+            multiple=frequency_corpus[word_str]
+            new_word=[]
             i=0
-            while i < len(word) :
-                if(i==len(word)-1):
-                    new_word.append(word[i])
-                    break
-                if word[i] == pair[0] and word[i + 1] == pair[1]:
-                    new_word.append(''.join(pair))
-                    i+=1
+            while i<len(word):
+                if i<len(word)-1 and (word[i],word[i+1])==pair:
+                    new_word.append("".join(pair))
+                    i+=2
                 else:
                     new_word.append(word[i])
-                i+=1
-            new_corpus.append(new_word)
+                    i+=1
+            new_corpus[" ".join(new_word)]=new_corpus.get(" ".join(new_word),0)+multiple
+
         
         return new_corpus
     
@@ -95,7 +110,7 @@ class Tokenizer:
         return [word]
 
 # Example Usage
-corpus = ["low", "lower", "newest", "widest"]
+corpus = ["low", "lower", "newest", "widest","low","new","wider"]
 num_merges = 10
 
 tokenizer = Tokenizer()
