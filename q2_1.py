@@ -102,8 +102,20 @@ class BigramLM:
         print(df)
 
     
-    def generate_sentences(self):
-        pass
+    def generate_sentences(self,sentence_length):
+        r=random.choice(self.uniquewords)
+        s=r+" "
+        k=self.uniquewords.index(r)
+        for i in range(sentence_length-1):
+            maximump=0
+            mi=0
+            for j in range(len(self.uniquewords)):
+                if(self.co_matrix[k][j]>maximump):
+                    maximump=self.co_matrix[k][j]
+                    mi=j
+            k=mi        
+            s+=(self.uniquewords[k]+" ")
+        return s
     
     def findsentenceprob(self,sentence):
         p=1
