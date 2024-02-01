@@ -125,20 +125,24 @@ class Tokenizer:
 
         # Removing punctuations and white spaces at the ends of the string
         sentence_punctuation_removed = self.remove_punctuations(sentence_case_folded)    
-       
         # Converting string into a list of characters
         character_list = self.get_character_list(sentence_punctuation_removed)
-    
+        
         # Tokenizing the string
         finalTokenizedList=character_list.copy()
         for word_index in range(len(finalTokenizedList)):
             for rule in merge_rules:
-                for i in range(0,len(finalTokenizedList[word_index])-1):
+                # for i in range(0,len(finalTokenizedList[word_index])-1):
+                length = len(finalTokenizedList[word_index])
+                i=0
+                while(i<length-1):
                     if finalTokenizedList[word_index][i]==rule[0] and finalTokenizedList[word_index][i+1]==rule[1]:
                         mergedWord = [finalTokenizedList[word_index][i] + finalTokenizedList[word_index][i+1]]
                         word_before = finalTokenizedList[word_index][0:i]
                         word_after = finalTokenizedList[word_index][i+2:]
                         finalTokenizedList[word_index] = word_before + mergedWord + word_after
+                        length -=1
+                    i=i+1
         return  finalTokenizedList
 
 # Example Usage
@@ -164,14 +168,16 @@ merge_rules = []
 with open("merge_rules.txt","r") as merge_rules_file:
     for rule in merge_rules_file:
         word_0,word_1 = rule.split(",")
-        word_1 = word_1[:-1]
+        if word_1[-1]=='\n':
+            word_1 = word_1[:-1]
         merge_rules.append((word_0,word_1))
 
 # Reading the test samples from the text file
 test_samples =  []
 with open("Test_Samples.txt","r") as test_file:
     for line in test_file:
-        line = line[:-1]
+        if line[-1]=='\n':
+            line = line[:-1]
         test_samples.append(line)
 
 # Creating the tokens and appending to the tokenized samples file
