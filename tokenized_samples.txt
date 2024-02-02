@@ -1,3 +1,0 @@
-t,h,i,s,/,i,s,/,low,est/
-t,h,i,s,/,i,s,/,new,er/
-t,h,i,s,/,i,s,/,w,i,d,er/
