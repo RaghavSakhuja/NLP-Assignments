@@ -71,6 +71,7 @@ class BigramLM:
                         numerator = self.bigrams[self.uniquewords[i]][self.uniquewords[j]] + k #Reference for the formula Notes and https://www.youtube.com/watch?v=gCI-ZC7irbY
                         denominator = self.unigrams[self.uniquewords[i]] + (k*len(self.uniquewords))
                         p = numerator/denominator
+                        
                         l.append((p*(self.unigrams[self.uniquewords[i]]/self.totalcount),self.uniquewords[i],self.uniquewords[j]))
                         x.append(p)
                         # print("yes")
@@ -84,9 +85,17 @@ class BigramLM:
                     x.append(p)
                     l.append((p*(self.unigrams[self.uniquewords[i]]/self.totalcount),self.uniquewords[i],self.uniquewords[j]))
             self.co_matrix.append(x)
+        
         df=pd.DataFrame(self.co_matrix,columns=self.uniquewords,index=self.uniquewords)
+        
         l.sort(reverse=True)
-        print(l[:5])
+        
+        with open("top5Laplace.csv", "w", newline='') as f:
+            csv_writer = csv.writer(f)
+            csv_writer.writerow(['Probability', 'Word1', 'Word2'])  # Write header to CSV
+
+            for p, word1, word2 in l[:5]:
+                csv_writer.writerow([p, word1, word2])
         # print(df)
         # print(sns.heatmap(df))
         # df.to_csv("CSVs/Laplace.csv")
@@ -94,6 +103,7 @@ class BigramLM:
 
         
     def KneserNey_learn(self, d=0.75):
+        l=[]
         for i in range(len(self.uniquewords)):
             x = []
 
@@ -109,13 +119,26 @@ class BigramLM:
                         alpha = (d / denominator) * w
 
                         kneser_ney_prob = numerator / denominator + alpha * continuation_prob
+                        
+                        l.append((kneser_ney_prob*(self.unigrams[self.uniquewords[i]]/self.totalcount),self.uniquewords[i],self.uniquewords[j]))
                         x.append(kneser_ney_prob)
                     else:
+                        l.append((0,self.uniquewords[i],self.uniquewords[j]))
                         x.append(0)
                 else:
+                    l.append((0,self.uniquewords[i],self.uniquewords[j]))
                     x.append(0)
             self.co_matrix.append(x)
         df = pd.DataFrame(self.co_matrix, columns=self.uniquewords, index=self.uniquewords)
+        
+        l.sort(reverse=True)
+        
+        with open("top5Kneser.csv", "w", newline='') as f:
+            csv_writer = csv.writer(f)
+            csv_writer.writerow(['Probability', 'Word1', 'Word2'])  # Write header to CSV
+
+            for p, word1, word2 in l[:5]:
+                csv_writer.writerow([p, word1, word2])
         # print(df)
         # sns.heatmap(df)
         # df.to_csv("CSVs/KneserNey.csv")
@@ -158,7 +181,7 @@ class BigramLM:
 
         with open(output_file, "w", newline='') as f:
             csv_writer = csv.writer(f)
-            csv_writer.writerow(['Bigram', 'Count'])  # Write header to CS
+            csv_writer.writerow(['Bigram', 'Probability'])  # Write header to CS
             
             for i in self.bigrams:
                 for j in self.bigrams[i]:
@@ -203,7 +226,7 @@ b1.add_data("corpus.txt")
 # print(b1.bigrams)
 # b1.learn()
 # b1.KneserNey_learn()
-# b1.Laplace_learn()
+b1.Laplace_learn()
 # b1.find_top5_bigrams()
 # b1.update_corpus("corpus.txt")
 # b1.p_first("corpus2.txt")
