@@ -10,6 +10,8 @@ class BigramLM:
         self.co_matrix=[]
         self.unigrams={}
         self.totalcount=0
+        self.bol="#"
+        self.eol="$"
 
     def add_data(self,corpus):
         with open(corpus) as f:
