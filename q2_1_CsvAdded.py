@@ -8,15 +8,14 @@ class BigramLM:
     def __init__(self):
         self.bigrams={}
         self.uniquewords=[]
-        self.co_matrix=[]
+        self.co_matrix_no=[]
+        self.co_matrix_laplace=[]
+        self.co_matrix_kneser=[]
         self.unigrams={}
         self.totalcount=0
-        self.bol="#"
-        self.eol="$"
         self.bigramCount = 0
 
-    def add_data(self,corpus):
-        
+    def add_data(self,corpus):        
         with open(corpus) as f:
             words = f.read().split()
         for i in range(len(words)-1):
@@ -53,18 +52,14 @@ class BigramLM:
                         x.append(0)
                 else:
                     x.append(0)
-            self.co_matrix.append(x)
-        df=pd.DataFrame(self.co_matrix,columns=self.uniquewords,index=self.uniquewords)
-        # print(df)
-        # print(sns.heatmap(df))
-        # df.to_csv("CSVs/NoSmoothing.csv")
-        
+            self.co_matrix_no.append(x)
+        df=pd.DataFrame(self.co_matrix_no,columns=self.uniquewords,index=self.uniquewords)
+        df.to_csv('CSVs/No_Smoothing.csv')
+
     def Laplace_learn(self,k=1):
         l=[]
         for i in range(len(self.uniquewords)):
             x=[]
-            
-            
             for j in range(len(self.uniquewords)):
                 if self.uniquewords[i] in self.bigrams:
                     if self.uniquewords[j] in self.bigrams[self.uniquewords[i]]:
@@ -84,23 +79,17 @@ class BigramLM:
                     p = k / (k * len(self.uniquewords))
                     x.append(p)
                     l.append((p*(self.unigrams[self.uniquewords[i]]/self.totalcount),self.uniquewords[i],self.uniquewords[j]))
-            self.co_matrix.append(x)
+            self.co_matrix_laplace.append(x)
         
-        df=pd.DataFrame(self.co_matrix,columns=self.uniquewords,index=self.uniquewords)
+        df=pd.DataFrame(self.co_matrix_laplace,columns=self.uniquewords,index=self.uniquewords)
+        df.to_csv('CSVs/Laplace_Smoothing.csv')
         
         l.sort(reverse=True)
-        
-        with open("top5Laplace.csv", "w", newline='') as f:
+        with open("Top5Bigrams/top5Laplace.csv", "w", newline='') as f:
             csv_writer = csv.writer(f)
             csv_writer.writerow(['Probability', 'Word1', 'Word2'])  # Write header to CSV
-
             for p, word1, word2 in l[:5]:
                 csv_writer.writerow([p, word1, word2])
-        # print(df)
-        # print(sns.heatmap(df))
-        # df.to_csv("CSVs/Laplace.csv")
-        
-
         
     def KneserNey_learn(self, d=0.75):
         l=[]
@@ -128,33 +117,17 @@ class BigramLM:
                 else:
                     l.append((0,self.uniquewords[i],self.uniquewords[j]))
                     x.append(0)
-            self.co_matrix.append(x)
-        df = pd.DataFrame(self.co_matrix, columns=self.uniquewords, index=self.uniquewords)
-        
-        l.sort(reverse=True)
-        
-        with open("top5Kneser.csv", "w", newline='') as f:
+            self.co_matrix_kneser.append(x)
+        df = pd.DataFrame(self.co_matrix_kneser, columns=self.uniquewords, index=self.uniquewords)
+        df.to_csv('CSVs/KneserNey_Smoothing.csv')
+
+        l.sort(reverse=True) 
+        with open("Top5Bigrams/top5Kneser.csv", "w", newline='') as f:
             csv_writer = csv.writer(f)
             csv_writer.writerow(['Probability', 'Word1', 'Word2'])  # Write header to CSV
 
             for p, word1, word2 in l[:5]:
                 csv_writer.writerow([p, word1, word2])
-        # print(df)
-        # sns.heatmap(df)
-        # df.to_csv("CSVs/KneserNey.csv")
-
-
-    
-    def generate_sentences(self,sentence_length):
-        # r=random.choice(self.uniquewords)
-        r="i"
-        s=r+" "
-        k=self.uniquewords.index(r)
-        for i in range(sentence_length-1):
-            w=random.choices(self.uniquewords,weights=self.co_matrix[k],k=1)[0]
-            s+=w+" "
-            k=self.uniquewords.index(w)
-        return s
     
     def findsentenceprob(self,sentence):
         p=1
@@ -173,63 +146,19 @@ class BigramLM:
                     break
         else:
             p=0
-        # print(p)
         return p
     
-    def find_top5_bigrams(self, output_file="top5prob.csv"):
+    def find_top5_bigrams(self, output_file="Top5Bigrams/top5prob.csv"):
         l = []
-
         with open(output_file, "w", newline='') as f:
             csv_writer = csv.writer(f)
             csv_writer.writerow(['Bigram', 'Probability'])  # Write header to CS
-            
             for i in self.bigrams:
                 for j in self.bigrams[i]:
                     l.append((self.bigrams[i][j]/self.totalcount, i + " " + j))
             l.sort(reverse=True)
             top5 = l[:5]
-
             for count, bigram in top5:
                 csv_writer.writerow([bigram, count])
-                
-    def update_corpus(self,corpus):
-        with open("corpus2.txt","w") as f1:
-            with open(corpus,"r") as f2:
-                sentences=f2.readlines()
-                for i in sentences:
-                    i=i.strip()
-                    f1.write("# "+i+" $\n")
-                    
-    def p_first(self,corpus):
-            with open(corpus) as f:
-                words = f.read().split()
-                d={}
-                total=0
-                for i in range(len(words)):
-                    if (words[i]==self.bol):
-                        if(words[i+1] in d):
-                            d[words[i+1]]+=1
-                        else:
-                            d[words[i+1]]=1
-                        total+=1
-                for i in d:
-                    d[i] = d[i]/total
-                d2={'word':d.keys(),'prob':d.values()}
-                df=pd.DataFrame(d2)
-                df.to_csv("first_prob.csv")
-                
-                
+              
 
-
-b1=BigramLM()
-b1.add_data("corpus.txt")
-# print(b1.bigrams)
-# b1.learn()
-# b1.KneserNey_learn()
-b1.Laplace_learn()
-# b1.find_top5_bigrams()
-# b1.update_corpus("corpus.txt")
-# b1.p_first("corpus2.txt")
-# print(b1.findsentenceprob("i stand here i feel empty a class post count link href http mooshilu"))
-
-#Create csvs for kneser and laplace and add kneser ney freq calculation
