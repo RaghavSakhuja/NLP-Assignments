@@ -129,7 +129,14 @@ class BigramLM:
             for p, word1, word2 in l[:5]:
                 csv_writer.writerow([p, word1, word2])
     
-    def findsentenceprob(self,sentence):
+    def findsentenceprob(self,sentence,smooth):
+        if smooth=='No':
+            co_matrix=self.co_matrix_no
+        elif smooth=='Laplace':
+            co_matrix=self.co_matrix_laplace
+        elif smooth=='Kneser':
+            co_matrix=self.co_matrix_kneser
+        l=[]
         p=1
         words=sentence.strip(".").split()
         if len(words)>0:
@@ -138,15 +145,17 @@ class BigramLM:
                 idx1=(self.uniquewords.index(words[i]) if words[i] in self.uniquewords else -1)
                 idx2=(self.uniquewords.index(words[i+1]) if words[i+1] in self.uniquewords else -1)
                 if(idx1!=-1 and idx2!=-1):
-                    x=self.co_matrix[idx1][idx2]
+                    x=co_matrix[idx1][idx2]
                     # print(x)
                     p*=x
+                    l.append(x)
                 else:
                     p*=0
+                    l.append(0)
                     break
         else:
             p=0
-        return p
+        return (p,l)
     
     def find_top5_bigrams(self, output_file="Top5Bigrams/top5prob.csv"):
         l = []

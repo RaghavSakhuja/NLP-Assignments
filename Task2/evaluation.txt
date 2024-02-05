@@ -1,125 +1,115 @@
-i action abandoning adrasteius involves end joan energy officer reilly results were ranted dan lamb contracts testimony alice achieved daughter parents
-sentence prob:4.4266148748672505e-72 
-sentence emotion score:{'label': 'anger', 'score': 0.9284263849258423} 
+i went czech fierce st pale goddamn seemed dunno clothes wound
+sentence prob:8.971278359177421e-34 
+sentence emotion score:{'label': 'anger', 'score': 0.9916040301322937} 
 words emotion scores: 
-{'label': 'anger', 'score': 0.8497559428215027, 'words': 'i action', 'bigramprob': 0.00010848340203948796}
-{'label': 'anger', 'score': 0.4814701974391937, 'words': 'action abandoning', 'bigramprob': 0.0001840264998159735}
-{'label': 'anger', 'score': 0.10226470232009888, 'words': 'abandoning adrasteius', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.7707341909408569, 'words': 'adrasteius involves', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.5337563157081604, 'words': 'involves end', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.31302201747894287, 'words': 'end joan', 'bigramprob': 0.0001834862385321101}
-{'label': 'anger', 'score': 0.09984362870454788, 'words': 'joan energy', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.530845582485199, 'words': 'energy officer', 'bigramprob': 0.0001839249586168843}
-{'label': 'anger', 'score': 0.7090786099433899, 'words': 'officer reilly', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.3859790861606598, 'words': 'reilly results', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.2809365689754486, 'words': 'results were', 'bigramprob': 0.0001840942562592047}
-{'label': 'anger', 'score': 0.9959945678710938, 'words': 'were ranted', 'bigramprob': 0.00018261504747991235}
-{'label': 'anger', 'score': 0.9958195686340332, 'words': 'ranted dan', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.8602277636528015, 'words': 'dan lamb', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.7199305295944214, 'words': 'lamb contracts', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.518510639667511, 'words': 'contracts testimony', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.25053930282592773, 'words': 'testimony alice', 'bigramprob': 0.00018416206261510129}
-{'label': 'anger', 'score': 0.009069863706827164, 'words': 'alice achieved', 'bigramprob': 0.00018412815319462345}
-{'label': 'anger', 'score': 0.035792026668787, 'words': 'achieved daughter', 'bigramprob': 0.00018412815319462345}
-{'label': 'anger', 'score': 0.510234534740448, 'words': 'daughter parents', 'bigramprob': 0.0001840942562592047}
-i potentially negative right acts was involved crises ambulatory i reluctant afraid
-sentence prob:1.6157193576776276e-37 
-sentence emotion score:{'label': 'fear', 'score': 0.9969381093978882} 
+{'label': 'anger', 'score': 0.49254003167152405, 'words': 'i went', 'bigramprob': 0.0009763506183553916}
+{'label': 'anger', 'score': 0.18598267436027527, 'words': 'went czech', 'bigramprob': 0.00018365472910927456}
+{'label': 'anger', 'score': 0.9446110725402832, 'words': 'czech fierce', 'bigramprob': 0.00018416206261510129}
+{'label': 'anger', 'score': 0.9890778660774231, 'words': 'fierce st', 'bigramprob': 0.0001840942562592047}
+{'label': 'anger', 'score': 0.49179187417030334, 'words': 'st pale', 'bigramprob': 0.00018406037180195104}
+{'label': 'anger', 'score': 0.9517514705657959, 'words': 'pale goddamn', 'bigramprob': 0.00018416206261510129}
+{'label': 'anger', 'score': 0.9365651607513428, 'words': 'goddamn seemed', 'bigramprob': 0.00018416206261510129}
+{'label': 'anger', 'score': 0.35946470499038696, 'words': 'seemed dunno', 'bigramprob': 0.0001840264998159735}
+{'label': 'anger', 'score': 0.8084852695465088, 'words': 'dunno clothes', 'bigramprob': 0.00018412815319462345}
+{'label': 'anger', 'score': 0.3805859386920929, 'words': 'clothes wound', 'bigramprob': 0.00018412815319462345}
+drained neuropathy hanford spider ponder ballistic coerce zimmerman kicks sinus stranger snippy months
+sentence prob:3.0411106263659117e-45 
+sentence emotion score:{'label': 'fear', 'score': 0.13782399892807007} 
 words emotion scores: 
-{'label': 'fear', 'score': 0.24283753335475922, 'words': 'i potentially', 'bigramprob': 0.00010848340203948796}
-{'label': 'fear', 'score': 0.1957683563232422, 'words': 'potentially negative', 'bigramprob': 0.00036832412523020257}
-{'label': 'fear', 'score': 0.005279155448079109, 'words': 'negative right', 'bigramprob': 0.0003677822728944465}
-{'label': 'fear', 'score': 0.02971010096371174, 'words': 'right acts', 'bigramprob': 0.00018261504747991235}
-{'label': 'fear', 'score': 0.2137124091386795, 'words': 'acts was', 'bigramprob': 0.00018416206261510129}
-{'label': 'fear', 'score': 0.17702071368694305, 'words': 'was involved', 'bigramprob': 0.00034674063800277393}
-{'label': 'fear', 'score': 0.6179324984550476, 'words': 'involved crises', 'bigramprob': 0.00018406037180195104}
-{'label': 'fear', 'score': 0.8557661175727844, 'words': 'crises ambulatory', 'bigramprob': 0.00018416206261510129}
-{'label': 'fear', 'score': 0.40540051460266113, 'words': 'ambulatory i', 'bigramprob': 0.00036832412523020257}
-{'label': 'fear', 'score': 0.9961658716201782, 'words': 'i reluctant', 'bigramprob': 0.00010848340203948796}
-{'label': 'fear', 'score': 0.9966979026794434, 'words': 'reluctant afraid', 'bigramprob': 0.00018372221201543268}
-i dip bloom experienced comparison everybodys tv nice f respecting beyond hang thanked
-sentence prob:3.382607771346003e-42 
-sentence emotion score:{'label': 'joy', 'score': 0.6977741122245789} 
+{'label': 'fear', 'score': 0.2016487866640091, 'words': 'drained neuropathy', 'bigramprob': 0.00018412815319462345}
+{'label': 'fear', 'score': 0.8895200490951538, 'words': 'neuropathy hanford', 'bigramprob': 0.00018416206261510129}
+{'label': 'fear', 'score': 0.6586378812789917, 'words': 'hanford spider', 'bigramprob': 0.00018416206261510129}
+{'label': 'fear', 'score': 0.8858018517494202, 'words': 'spider ponder', 'bigramprob': 0.00018416206261510129}
+{'label': 'fear', 'score': 0.6199451684951782, 'words': 'ponder ballistic', 'bigramprob': 0.00018416206261510129}
+{'label': 'fear', 'score': 0.6361982822418213, 'words': 'ballistic coerce', 'bigramprob': 0.00018416206261510129}
+{'label': 'fear', 'score': 0.11896837502717972, 'words': 'coerce zimmerman', 'bigramprob': 0.00018416206261510129}
+{'label': 'fear', 'score': 0.09703381359577179, 'words': 'zimmerman kicks', 'bigramprob': 0.00018416206261510129}
+{'label': 'fear', 'score': 0.3604358434677124, 'words': 'kicks sinus', 'bigramprob': 0.00018412815319462345}
+{'label': 'fear', 'score': 0.8981801867485046, 'words': 'sinus stranger', 'bigramprob': 0.00018416206261510129}
+{'label': 'fear', 'score': 0.046866524964571, 'words': 'stranger snippy', 'bigramprob': 0.00018406037180195104}
+{'label': 'fear', 'score': 0.0022902910131961107, 'words': 'snippy months', 'bigramprob': 0.00018416206261510129}
+grade prepared seen bengals outing idol doubt capp vibrant standards fully gone valued
+sentence prob:1.5172002230789247e-45 
+sentence emotion score:{'label': 'joy', 'score': 0.9980229139328003} 
 words emotion scores: 
-{'label': 'joy', 'score': 0.4899916350841522, 'words': 'i dip', 'bigramprob': 0.00010848340203948796}
-{'label': 'joy', 'score': 0.7462685704231262, 'words': 'dip bloom', 'bigramprob': 0.00018416206261510129}
-{'label': 'joy', 'score': 0.9478678703308105, 'words': 'bloom experienced', 'bigramprob': 0.00018416206261510129}
-{'label': 'joy', 'score': 0.8700556755065918, 'words': 'experienced comparison', 'bigramprob': 0.00018406037180195104}
-{'label': 'joy', 'score': 0.07445934414863586, 'words': 'comparison everybodys', 'bigramprob': 0.00018412815319462345}
-{'label': 'joy', 'score': 0.44420158863067627, 'words': 'everybodys tv', 'bigramprob': 0.00018416206261510129}
-{'label': 'joy', 'score': 0.4991404414176941, 'words': 'tv nice', 'bigramprob': 0.00018406037180195104}
-{'label': 'joy', 'score': 0.3828291893005371, 'words': 'nice f', 'bigramprob': 0.00018372221201543268}
-{'label': 'joy', 'score': 0.4299277365207672, 'words': 'f respecting', 'bigramprob': 0.00018412815319462345}
-{'label': 'joy', 'score': 0.8299633264541626, 'words': 'respecting beyond', 'bigramprob': 0.00018416206261510129}
-{'label': 'joy', 'score': 0.21404461562633514, 'words': 'beyond hang', 'bigramprob': 0.0001840942562592047}
-{'label': 'joy', 'score': 0.9293150305747986, 'words': 'hang thanked', 'bigramprob': 0.00018416206261510129}
-i gentle enjoyed talking relations structure romantic starved such buffed shouldnt sensed laughed hart hairstye wise swear wedding lover riders kisses beloved romantically
-sentence prob:1.498533477849361e-79 
-sentence emotion score:{'label': 'love', 'score': 0.9957418441772461} 
+{'label': 'joy', 'score': 0.8581085801124573, 'words': 'grade prepared', 'bigramprob': 0.00018416206261510129}
+{'label': 'joy', 'score': 0.8467140793800354, 'words': 'prepared seen', 'bigramprob': 0.00018412815319462345}
+{'label': 'joy', 'score': 0.1528984010219574, 'words': 'seen bengals', 'bigramprob': 0.0001839926402943882}
+{'label': 'joy', 'score': 0.27192968130111694, 'words': 'bengals outing', 'bigramprob': 0.00018416206261510129}
+{'label': 'joy', 'score': 0.8568056225776672, 'words': 'outing idol', 'bigramprob': 0.00018416206261510129}
+{'label': 'joy', 'score': 0.43619653582572937, 'words': 'idol doubt', 'bigramprob': 0.00018416206261510129}
+{'label': 'joy', 'score': 0.07656369358301163, 'words': 'doubt capp', 'bigramprob': 0.0001840264998159735}
+{'label': 'joy', 'score': 0.9975613355636597, 'words': 'capp vibrant', 'bigramprob': 0.00018416206261510129}
+{'label': 'joy', 'score': 0.9980959296226501, 'words': 'vibrant standards', 'bigramprob': 0.00018416206261510129}
+{'label': 'joy', 'score': 0.8720487952232361, 'words': 'standards fully', 'bigramprob': 0.00018416206261510129}
+{'label': 'joy', 'score': 0.9012991786003113, 'words': 'fully gone', 'bigramprob': 0.0001840942562592047}
+{'label': 'joy', 'score': 0.967377245426178, 'words': 'gone valued', 'bigramprob': 0.0001839926402943882}
+amused gods judge gently fierce cuddle forgiving wanna diet childhood longingly sweet mixed mental fingertips end compassionate glamourous tasks supportiveness gift ludicrous called beloved met
+sentence prob:4.549133913302505e-90 
+sentence emotion score:{'label': 'love', 'score': 0.9949973821640015} 
 words emotion scores: 
-{'label': 'love', 'score': 0.9883295297622681, 'words': 'i gentle', 'bigramprob': 0.00010848340203948796}
-{'label': 'love', 'score': 0.993573009967804, 'words': 'gentle enjoyed', 'bigramprob': 0.00018372221201543268}
-{'label': 'love', 'score': 0.29465484619140625, 'words': 'enjoyed talking', 'bigramprob': 0.00018406037180195104}
-{'label': 'love', 'score': 0.0015489563811570406, 'words': 'talking relations', 'bigramprob': 0.00018385732671446958}
-{'label': 'love', 'score': 0.010076537728309631, 'words': 'relations structure', 'bigramprob': 0.00018412815319462345}
-{'label': 'love', 'score': 0.9718371629714966, 'words': 'structure romantic', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.9922299981117249, 'words': 'romantic starved', 'bigramprob': 0.00018372221201543268}
-{'label': 'love', 'score': 0.012150943279266357, 'words': 'starved such', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.01319042220711708, 'words': 'such buffed', 'bigramprob': 0.00018301610541727673}
-{'label': 'love', 'score': 0.0009116900037042797, 'words': 'buffed shouldnt', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.0019421967444941401, 'words': 'shouldnt sensed', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.006127603352069855, 'words': 'sensed laughed', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.003212930867448449, 'words': 'laughed hart', 'bigramprob': 0.00018412815319462345}
-{'label': 'love', 'score': 0.036239590495824814, 'words': 'hart hairstye', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.007057898677885532, 'words': 'hairstye wise', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.0015303330728784204, 'words': 'wise swear', 'bigramprob': 0.00018412815319462345}
-{'label': 'love', 'score': 0.05125707760453224, 'words': 'swear wedding', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.625471293926239, 'words': 'wedding lover', 'bigramprob': 0.00018406037180195104}
-{'label': 'love', 'score': 0.7762870788574219, 'words': 'lover riders', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.7722238302230835, 'words': 'riders kisses', 'bigramprob': 0.00018416206261510129}
-{'label': 'love', 'score': 0.9518504738807678, 'words': 'kisses beloved', 'bigramprob': 0.00018412815319462345}
-{'label': 'love', 'score': 0.9907611012458801, 'words': 'beloved romantically', 'bigramprob': 0.0001836884643644379}
-i unfit learning emotional contain pathetic overly unsuccessful kenny but latter isolation circumstance remorse tackling toxins this beginning resigned tourists painless
-sentence prob:3.9787419126276154e-72 
-sentence emotion score:{'label': 'sadness', 'score': 0.9978050589561462} 
+{'label': 'love', 'score': 0.006648569367825985, 'words': 'amused gods', 'bigramprob': 0.00018412815319462345}
+{'label': 'love', 'score': 0.010917829349637032, 'words': 'gods judge', 'bigramprob': 0.00018416206261510129}
+{'label': 'love', 'score': 0.4533635675907135, 'words': 'judge gently', 'bigramprob': 0.00018416206261510129}
+{'label': 'love', 'score': 0.010177332907915115, 'words': 'gently fierce', 'bigramprob': 0.00018416206261510129}
+{'label': 'love', 'score': 0.004376813769340515, 'words': 'fierce cuddle', 'bigramprob': 0.0001840942562592047}
+{'label': 'love', 'score': 0.5623931884765625, 'words': 'cuddle forgiving', 'bigramprob': 0.00018416206261510129}
+{'label': 'love', 'score': 0.39090681076049805, 'words': 'forgiving wanna', 'bigramprob': 0.00018412815319462345}
+{'label': 'love', 'score': 0.006988489534705877, 'words': 'wanna diet', 'bigramprob': 0.00018406037180195104}
+{'label': 'love', 'score': 0.01221592165529728, 'words': 'diet childhood', 'bigramprob': 0.0001840942562592047}
+{'label': 'love', 'score': 0.9940074682235718, 'words': 'childhood longingly', 'bigramprob': 0.00018412815319462345}
+{'label': 'love', 'score': 0.9923793077468872, 'words': 'longingly sweet', 'bigramprob': 0.00018416206261510129}
+{'label': 'love', 'score': 0.720108687877655, 'words': 'sweet mixed', 'bigramprob': 0.00018315018315018315}
+{'label': 'love', 'score': 0.0040488941594958305, 'words': 'mixed mental', 'bigramprob': 0.00018416206261510129}
+{'label': 'love', 'score': 0.002182216849178076, 'words': 'mental fingertips', 'bigramprob': 0.00018412815319462345}
+{'label': 'love', 'score': 0.015480143018066883, 'words': 'fingertips end', 'bigramprob': 0.00018416206261510129}
+{'label': 'love', 'score': 0.9134718775749207, 'words': 'end compassionate', 'bigramprob': 0.0001834862385321101}
+{'label': 'love', 'score': 0.9912290573120117, 'words': 'compassionate glamourous', 'bigramprob': 0.00018372221201543268}
+{'label': 'love', 'score': 0.1816348135471344, 'words': 'glamourous tasks', 'bigramprob': 0.00018412815319462345}
+{'label': 'love', 'score': 0.5909400582313538, 'words': 'tasks supportiveness', 'bigramprob': 0.00018416206261510129}
+{'label': 'love', 'score': 0.9865706562995911, 'words': 'supportiveness gift', 'bigramprob': 0.00018416206261510129}
+{'label': 'love', 'score': 0.023656565696001053, 'words': 'gift ludicrous', 'bigramprob': 0.0001840942562592047}
+{'label': 'love', 'score': 0.0460985042154789, 'words': 'ludicrous called', 'bigramprob': 0.0001840942562592047}
+{'label': 'love', 'score': 0.61664217710495, 'words': 'called beloved', 'bigramprob': 0.0001839587932303164}
+{'label': 'love', 'score': 0.878108561038971, 'words': 'beloved met', 'bigramprob': 0.0001836884643644379}
+remaining puts tears victim experiments hopeless ever adn recently regrets shamed supermarket succumb frail bike of overcome training ways wasted jot fix neither tears
+sentence prob:1.0928103587312293e-86 
+sentence emotion score:{'label': 'sadness', 'score': 0.9988800883293152} 
 words emotion scores: 
-{'label': 'sadness', 'score': 0.9735093116760254, 'words': 'i unfit', 'bigramprob': 0.00010848340203948796}
-{'label': 'sadness', 'score': 0.9599025845527649, 'words': 'unfit learning', 'bigramprob': 0.00018412815319462345}
-{'label': 'sadness', 'score': 0.9368468523025513, 'words': 'learning emotional', 'bigramprob': 0.0001840942562592047}
-{'label': 'sadness', 'score': 0.971472978591919, 'words': 'emotional contain', 'bigramprob': 0.00018389113644722325}
-{'label': 'sadness', 'score': 0.9973949193954468, 'words': 'contain pathetic', 'bigramprob': 0.00018412815319462345}
-{'label': 'sadness', 'score': 0.9889842867851257, 'words': 'pathetic overly', 'bigramprob': 0.0001839926402943882}
-{'label': 'sadness', 'score': 0.6787298917770386, 'words': 'overly unsuccessful', 'bigramprob': 0.00018406037180195104}
-{'label': 'sadness', 'score': 0.645250678062439, 'words': 'unsuccessful kenny', 'bigramprob': 0.00018416206261510129}
-{'label': 'sadness', 'score': 0.03809532895684242, 'words': 'kenny but', 'bigramprob': 0.00018416206261510129}
-{'label': 'sadness', 'score': 0.12394397705793381, 'words': 'but latter', 'bigramprob': 0.00017307026652821047}
-{'label': 'sadness', 'score': 0.25228387117385864, 'words': 'latter isolation', 'bigramprob': 0.00018416206261510129}
-{'label': 'sadness', 'score': 0.4414767324924469, 'words': 'isolation circumstance', 'bigramprob': 0.00018416206261510129}
-{'label': 'sadness', 'score': 0.9565671682357788, 'words': 'circumstance remorse', 'bigramprob': 0.00018416206261510129}
-{'label': 'sadness', 'score': 0.9859719276428223, 'words': 'remorse tackling', 'bigramprob': 0.00018416206261510129}
-{'label': 'sadness', 'score': 0.02274390310049057, 'words': 'tackling toxins', 'bigramprob': 0.00018416206261510129}
-{'label': 'sadness', 'score': 0.03461678326129913, 'words': 'toxins this', 'bigramprob': 0.00018416206261510129}
-{'label': 'sadness', 'score': 0.09507759660482407, 'words': 'this beginning', 'bigramprob': 0.00017433751743375174}
-{'label': 'sadness', 'score': 0.6849338412284851, 'words': 'beginning resigned', 'bigramprob': 0.0001839249586168843}
-{'label': 'sadness', 'score': 0.9261126518249512, 'words': 'resigned tourists', 'bigramprob': 0.00018416206261510129}
-{'label': 'sadness', 'score': 0.5968196392059326, 'words': 'tourists painless', 'bigramprob': 0.00018416206261510129}
-i feel surprise isolation haunt rations amazingness figs editors experiment radiant unclear stic etc swamp path unusual
-sentence prob:3.0500367867227944e-54 
-sentence emotion score:{'label': 'surprise', 'score': 0.7883464097976685} 
+{'label': 'sadness', 'score': 0.094242163002491, 'words': 'remaining puts', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.637486457824707, 'words': 'puts tears', 'bigramprob': 0.00018412815319462345}
+{'label': 'sadness', 'score': 0.7969703078269958, 'words': 'tears victim', 'bigramprob': 0.0001840942562592047}
+{'label': 'sadness', 'score': 0.028883466497063637, 'words': 'victim experiments', 'bigramprob': 0.00018406037180195104}
+{'label': 'sadness', 'score': 0.6988964676856995, 'words': 'experiments hopeless', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.9981446266174316, 'words': 'hopeless ever', 'bigramprob': 0.0001839926402943882}
+{'label': 'sadness', 'score': 0.0330268070101738, 'words': 'ever adn', 'bigramprob': 0.0001830831197363603}
+{'label': 'sadness', 'score': 0.049327485263347626, 'words': 'adn recently', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.9840357899665833, 'words': 'recently regrets', 'bigramprob': 0.0001839587932303164}
+{'label': 'sadness', 'score': 0.9979324340820312, 'words': 'regrets shamed', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.9976174235343933, 'words': 'shamed supermarket', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.7681363224983215, 'words': 'supermarket succumb', 'bigramprob': 0.00018412815319462345}
+{'label': 'sadness', 'score': 0.8959416747093201, 'words': 'succumb frail', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.2629919648170471, 'words': 'frail bike', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.03840244188904762, 'words': 'bike of', 'bigramprob': 0.0001840264998159735}
+{'label': 'sadness', 'score': 0.6166073083877563, 'words': 'of overcome', 'bigramprob': 0.00016181229773462783}
+{'label': 'sadness', 'score': 0.24801893532276154, 'words': 'overcome training', 'bigramprob': 0.0001840942562592047}
+{'label': 'sadness', 'score': 0.03414812684059143, 'words': 'training ways', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.983271062374115, 'words': 'ways wasted', 'bigramprob': 0.0001840264998159735}
+{'label': 'sadness', 'score': 0.919563353061676, 'words': 'wasted jot', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.05413694679737091, 'words': 'jot fix', 'bigramprob': 0.00018416206261510129}
+{'label': 'sadness', 'score': 0.10085614025592804, 'words': 'fix neither', 'bigramprob': 0.00018412815319462345}
+{'label': 'sadness', 'score': 0.3672935962677002, 'words': 'neither tears', 'bigramprob': 0.00018416206261510129}
+uncles you similarities roundly displaced c rejection interact emerged roommate weird
+sentence prob:4.306513881581551e-38 
+sentence emotion score:{'label': 'surprise', 'score': 0.017414705827832222} 
 words emotion scores: 
-{'label': 'surprise', 'score': 0.000908961403183639, 'words': 'i feel', 'bigramprob': 0.11043610327619874}
-{'label': 'surprise', 'score': 0.403851717710495, 'words': 'feel surprise', 'bigramprob': 0.0001415227851684121}
-{'label': 'surprise', 'score': 0.27553343772888184, 'words': 'surprise isolation', 'bigramprob': 0.00018412815319462345}
-{'label': 'surprise', 'score': 0.0036403967533260584, 'words': 'isolation haunt', 'bigramprob': 0.00018416206261510129}
-{'label': 'surprise', 'score': 0.013204284012317657, 'words': 'haunt rations', 'bigramprob': 0.00018416206261510129}
-{'label': 'surprise', 'score': 0.2736944258213043, 'words': 'rations amazingness', 'bigramprob': 0.00018416206261510129}
-{'label': 'surprise', 'score': 0.8279963135719299, 'words': 'amazingness figs', 'bigramprob': 0.00018416206261510129}
-{'label': 'surprise', 'score': 0.016797315329313278, 'words': 'figs editors', 'bigramprob': 0.00018412815319462345}
-{'label': 'surprise', 'score': 0.01631065644323826, 'words': 'editors experiment', 'bigramprob': 0.00018416206261510129}
-{'label': 'surprise', 'score': 0.006998164113610983, 'words': 'experiment radiant', 'bigramprob': 0.0001840942562592047}
-{'label': 'surprise', 'score': 0.012013420462608337, 'words': 'radiant unclear', 'bigramprob': 0.00018412815319462345}
-{'label': 'surprise', 'score': 0.0017630812944844365, 'words': 'unclear stic', 'bigramprob': 0.00018416206261510129}
-{'label': 'surprise', 'score': 0.00518846744671464, 'words': 'stic etc', 'bigramprob': 0.00018416206261510129}
-{'label': 'surprise', 'score': 0.010534767992794514, 'words': 'etc swamp', 'bigramprob': 0.0001839249586168843}
-{'label': 'surprise', 'score': 0.007004255428910255, 'words': 'swamp path', 'bigramprob': 0.00018416206261510129}
-{'label': 'surprise', 'score': 0.21277834475040436, 'words': 'path unusual', 'bigramprob': 0.00018416206261510129}
+{'label': 'surprise', 'score': 0.0016981210792437196, 'words': 'uncles you', 'bigramprob': 0.00018416206261510129}
+{'label': 'surprise', 'score': 0.07748054713010788, 'words': 'you similarities', 'bigramprob': 0.00017686593562079943}
+{'label': 'surprise', 'score': 0.06613823026418686, 'words': 'similarities roundly', 'bigramprob': 0.00018416206261510129}
+{'label': 'surprise', 'score': 0.005902445875108242, 'words': 'roundly displaced', 'bigramprob': 0.00018416206261510129}
+{'label': 'surprise', 'score': 0.00445823697373271, 'words': 'displaced c', 'bigramprob': 0.00018416206261510129}
+{'label': 'surprise', 'score': 0.0012194832088425756, 'words': 'c rejection', 'bigramprob': 0.00018412815319462345}
+{'label': 'surprise', 'score': 0.006012745667248964, 'words': 'rejection interact', 'bigramprob': 0.0001840942562592047}
+{'label': 'surprise', 'score': 0.01459323801100254, 'words': 'interact emerged', 'bigramprob': 0.00018412815319462345}
+{'label': 'surprise', 'score': 0.007114589214324951, 'words': 'emerged roommate', 'bigramprob': 0.00018416206261510129}
+{'label': 'surprise', 'score': 0.22059862315654755, 'words': 'roommate weird', 'bigramprob': 0.00018416206261510129}
