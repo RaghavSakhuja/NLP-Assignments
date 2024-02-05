@@ -162,9 +162,11 @@ class BigramLM:
         with open(output_file, "w", newline='') as f:
             csv_writer = csv.writer(f)
             csv_writer.writerow(['Bigram', 'Probability'])  # Write header to CS
+            s=0
             for i in self.bigrams:
                 for j in self.bigrams[i]:
-                    l.append((self.bigrams[i][j]/self.totalcount, i + " " + j))
+                    l.append(((self.bigrams[i][j]/self.bigramCount)*(self.unigrams[self.uniquewords[s]]/self.totalcount), i + " " + j))            
+                s+=1
             l.sort(reverse=True)
             top5 = l[:5]
             for count, bigram in top5:
