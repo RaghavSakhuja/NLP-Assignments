@@ -165,7 +165,7 @@ class BigramLM:
             s=0
             for i in self.bigrams:
                 for j in self.bigrams[i]:
-                    l.append(((self.bigrams[i][j]/self.bigramCount)*(self.unigrams[self.uniquewords[s]]/self.totalcount), i + " " + j))            
+                    l.append(((self.bigrams[i][j]/self.bigramCount), i + " " + j))            
                 s+=1
             l.sort(reverse=True)
             top5 = l[:5]
