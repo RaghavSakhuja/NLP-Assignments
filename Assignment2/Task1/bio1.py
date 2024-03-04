@@ -39,7 +39,7 @@ def bio_tagging_1(values,text):
     return labels
 
 def file_1():
-    input_file="NER_TRAIN_JUDGEMENT.json"
+    input_file="NER_TEST_JUDGEMENT.json"
     f = open(input_file,)
     input=json.load(f)
     data={}
@@ -48,12 +48,12 @@ def file_1():
         text=i['data']['text']
         data[i['id']]={"text":text,"labels":bio_tagging_1(values,text)}
     
-    file_path = "output1.json"
+    file_path = "NER_TEST_JUDGEMENT_processed.json"
     with open(file_path, "w") as json_file:
         json.dump(data, json_file,indent=3)
 
 def file_2():
-    input_file="Laptop_Review_Train.json"
+    input_file="Laptop_Review_Val.json"
     f = open(input_file,)
     input=json.load(f)
     data={}
@@ -66,10 +66,10 @@ def file_2():
         data[count]={"text":text,"labels":bio_tagging_2(words,aspects)}
         count+=1
         # break
-    file_path = "output2.json"
+    file_path = "Laptop_Review_Val_processed.json"
     # # Write data to JSON file
     with open(file_path, "w") as json_file:
         json.dump(data, json_file,indent=3)
         
-file_2()
+# file_2()
 file_1()
