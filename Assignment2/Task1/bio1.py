@@ -32,7 +32,7 @@ def bio_tagging_1(values,text):
                 labels[curr]="B_"+label
                 curr+=1
                 for j in range(len(s)-1):
-                    labels[curr]='I'+label
+                    labels[curr]='I_'+label
                     curr+=1
                 break
             curr+=1
