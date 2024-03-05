@@ -1,5 +1,9 @@
 import json
+import re
 
+def convert_multiple_spaces_to_single_space(input_string):
+    # Using regular expression to replace multiple spaces with a single space
+    return re.sub(r'\s+', ' ', input_string)
 
 def bio_tagging_2(words,aspects):
     labels=['O' for i in range(len(words))]
@@ -44,7 +48,14 @@ def bio_tagging_1(values,text):
                 break
             currcount+=len(words[curr])+1
             curr+=1
-    return labels
+    i=0
+    while(i<len(words)):
+        if words[i]=="":
+            words.pop(i)
+            labels.pop(i)
+        i+=1
+    # print(words)
+    return (" ".join(words),labels)
 
 def file_1():
     input_file="NER_TRAIN_JUDGEMENT.json"
@@ -54,9 +65,10 @@ def file_1():
     for i in input:
         values=i['annotations'][0]['result']
         text=i['data']['text']
-        data[i['id']]={"text":text,"labels":bio_tagging_1(values,text)}
+        words,labels=bio_tagging_1(values,text)
+        data[i['id']]={"text":words,"labels":labels}
     
-    file_path = "NER_TEST_JUDGEMENT_processed.json"
+    file_path = "processed/NER_train.json"
     with open(file_path, "w") as json_file:
         json.dump(data, json_file,indent=3)
 
@@ -71,7 +83,8 @@ def file_2():
         aspects=i['aspects']
         text=i['raw_words']
         # print(bio_tagging_2(words,aspects))
-        data[count]={"text":text,"labels":bio_tagging_2(words,aspects)}
+        words,labels=bio_tagging_2(words,aspects)
+        data[count]={"text":words,"labels":labels}
         count+=1
         # break
     file_path = "Laptop_Review_Val_processed.json"
