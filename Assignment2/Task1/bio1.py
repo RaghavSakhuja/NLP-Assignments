@@ -3,7 +3,8 @@ import re
 
 def convert_multiple_spaces_to_single_space(input_string):
     # Using regular expression to replace multiple spaces with a single space
-    return re.sub(r'\s+', ' ', input_string)
+    # input_string= re.sub(r'\s+', ' ', input_string)
+    return re.sub(r'[\n\r\t\f\v]', ' ', input_string)
 
 def bio_tagging_2(words,aspects):
     labels=['O' for i in range(len(words))]
@@ -22,6 +23,7 @@ def bio_tagging_2(words,aspects):
     return labels
 
 def bio_tagging_1(values,text):
+    text=convert_multiple_spaces_to_single_space(text)
     words=text.split(" ")
     labels=['O' for i in range(len(words))]
     curr=0
