@@ -1,5 +1,5 @@
 #ignore folder
-WordEmbeddings/
+Assignment2/WordEmbeddings/
 
 # Ignore build output directories
 /build/
