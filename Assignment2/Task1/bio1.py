@@ -21,6 +21,8 @@ def bio_tagging_1(values,text):
     words=text.split(" ")
     labels=['O' for i in range(len(words))]
     curr=0
+    currcount=0
+
     for i in values:
         i=i['value']
         start=i['start']
@@ -28,18 +30,24 @@ def bio_tagging_1(values,text):
         s=text[start:end+1].split()
         label=i['labels'][0]
         while(curr<len(words)):
-            if words[curr:curr+len(s)]==s:
+            # if ' '.join(s) in ' '.join(words[curr:curr+len(s)]):
+            if currcount+len(words[curr])>=start:
                 labels[curr]="B_"+label
+                currcount+=len(words[curr])+1
                 curr+=1
-                for j in range(len(s)-1):
+                
+                while(currcount<end):
+                # for j in range(len(s)-1):
                     labels[curr]='I_'+label
+                    currcount+=len(words[curr])+1
                     curr+=1
                 break
+            currcount+=len(words[curr])+1
             curr+=1
     return labels
 
 def file_1():
-    input_file="NER_TEST_JUDGEMENT.json"
+    input_file="NER_TRAIN_JUDGEMENT.json"
     f = open(input_file,)
     input=json.load(f)
     data={}
