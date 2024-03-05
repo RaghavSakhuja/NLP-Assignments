@@ -1,10 +1,1 @@
-#ignore folder
 Assignment2/WordEmbeddings/
-
-# Ignore build output directories
-/build/
-/dist/
-
-# Ignore IDE-specific files and directories
-.idea/
-.vscode/
