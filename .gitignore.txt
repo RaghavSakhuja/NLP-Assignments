@@ -1,11 +1,5 @@
-# Ignore compiled files
-*.class
-*.jar
-*.war
-*.bin
-
-# Ignore log files
-*.log
+#ignore folder
+WordEmbeddings/
 
 # Ignore build output directories
 /build/
