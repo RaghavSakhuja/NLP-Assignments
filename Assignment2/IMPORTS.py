@@ -1,20 +1,25 @@
-from gensim.models import KeyedVectors
-import matplotlib.pyplot as plt
-from keras.preprocessing.text import *
+
 import json
-import numpy as np
 import pickle
-from keras.callbacks import Callback
-from keras.metrics import F1Score, Precision, Recall
+import numpy as np
+import tensorflow as tf
 import matplotlib.pyplot as plt
-from keras.models import Sequential
-from keras.layers import Embedding
-from keras.layers import GRU, SimpleRNN
-from keras.layers import TimeDistributed
+
+
+from keras.models import Model
+from keras.layers import Dropout
+from keras_contrib.layers import CRF
 from keras.layers import Dense
+from keras.layers import Embedding
+from keras.models import Sequential
+from keras.callbacks import Callback
+from keras.preprocessing.text import *
 from keras.utils import to_categorical
+from gensim.models import KeyedVectors
+from keras.layers import GRU, SimpleRNN, LSTM, Bidirectional
+from keras.layers import TimeDistributed
+from keras.metrics import F1Score, Precision, Recall
 from keras.preprocessing.sequence import pad_sequences
-from sklearn.metrics import f1_score
 
 def checking(a):
     print("Hello World",a)
@@ -26,7 +31,6 @@ def create_train_test_val(file):
     lst_out_text=[]
     lst_out_labels=[]
     for i in file.values():
-        lst =[]
         sentence = i['text']
         sentence = sentence.lower()
         labels = i['labels']
@@ -125,7 +129,7 @@ class F1ScoreCallback(Callback):
     def __init__(self, data, name):
         super(F1ScoreCallback, self).__init__()
         self.data = data
-        self.name= name
+        self.name = name
         self.f1_scores = [] 
 
     
