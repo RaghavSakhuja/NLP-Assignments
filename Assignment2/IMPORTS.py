@@ -3,25 +3,23 @@ import json
 import pickle
 import numpy as np
 import tensorflow as tf
-import tensorflow_addons as tfa
 import matplotlib.pyplot as plt
 
+
 from keras.models import Model
+from keras.layers import Dropout,Input
+from tensorflow_addons.layers import CRF
 from keras.layers import Dense
 from keras.layers import Embedding
 from keras.models import Sequential
 from keras.callbacks import Callback
 from keras.preprocessing.text import *
 from keras.utils import to_categorical
-from keras.layers import Dropout,Input
 from gensim.models import KeyedVectors
-from tensorflow_addons.layers import CRF
+from keras.layers import GRU, SimpleRNN, LSTM, Bidirectional
 from keras.layers import TimeDistributed
-from tensorflow_addons.optimizers import AdamW
 from keras.metrics import F1Score, Precision, Recall
 from keras.preprocessing.sequence import pad_sequences
-from keras.layers import GRU, SimpleRNN, LSTM, Bidirectional
-from tensorflow_addons.losses import SigmoidFocalCrossEntropy
 
 def checking(a):
     print("Hello World",a)
@@ -176,3 +174,35 @@ class F1ScoreCallback(Callback):
         result = f1.result().numpy()
         print(f'{self.name} F1 Score: {result}')
         self.f1_scores.append(result)
+
+
+#---------Prediction Functions----------------------------------------------
+def get_pred(Y_padded_output):
+    final_output=[]
+    for i in range(Y_padded_output.shape[0]):
+        output=[]
+        for j in range(Y_padded_output.shape[1]):
+            max_value=-1
+            maxIndex=-1
+            for k in range(Y_padded_output.shape[2]):
+                if Y_padded_output[i][j][k]>max_value:
+                    maxIndex=k
+                    max_value=max(max_value,Y_padded_output[i][j][k])
+            output.append(maxIndex)
+        final_output.append(output)
+    return final_output
+
+def get_real(Y_padded_test):
+    final_Y=[]
+    for i in range(Y_padded_test.shape[0]):
+        output=[]
+        for j in range(Y_padded_test.shape[1]):
+            max_value=-1
+            maxIndex=-1
+            for k in range(Y_padded_test.shape[2]):
+                if Y_padded_test[i][j][k]>max_value:
+                    maxIndex=k
+                    max_value=max(max_value,Y_padded_test[i][j][k])
+            output.append(maxIndex)
+        final_Y.append(output)
+    return final_Y
