@@ -5,7 +5,8 @@ import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-
+import fasttext
+import fasttext.util
 from keras.models import Model
 from keras.layers import Dropout,Input
 from tensorflow_addons.layers import CRF
@@ -111,8 +112,8 @@ def draw_loss_graph(model,title,f1_scores_train,f1_scores_val):
 --------------------------------------MODELS--------------------------------------
 '''
 
-def save_model(model, name, embedding, task):
-    with open(f'Saved_Models/{task}_{name}_{embedding}.pkl', 'wb') as file:
+def save_model(model, name, embedding, task,type):
+    with open(f'Saved_Models/{type}/{task}_{name}_{embedding}.pkl', 'wb') as file:
         pickle.dump(model, file)
 
 def load_model(file_name):
