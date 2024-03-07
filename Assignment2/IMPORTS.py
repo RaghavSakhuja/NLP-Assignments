@@ -20,6 +20,7 @@ from keras.layers import GRU, SimpleRNN, LSTM, Bidirectional
 from keras.layers import TimeDistributed
 from keras.metrics import F1Score, Precision, Recall
 from keras.preprocessing.sequence import pad_sequences
+from sklearn.metrics import f1_score
 
 def checking(a):
     print("Hello World",a)
@@ -137,6 +138,13 @@ class F1ScoreCallback(Callback):
     def on_epoch_end(self, epoch, logs=None):
         x_val, y_val = self.data
         y_pred = self.model.predict(x_val)
+        def scikitf1(pred,real):
+
+            true_labels_flat = [label for sublist in real for label in sublist]
+            predicted_labels_flat = [label for sublist in pred for label in sublist]
+            # Compute F1 score
+            f1 = f1_score(true_labels_flat, predicted_labels_flat, average='macro')
+            return f1
         def get_pred(Y_padded_output):
                 final_output=[]
                 for i in range(Y_padded_output.shape[0]):
@@ -166,14 +174,14 @@ class F1ScoreCallback(Callback):
                     output.append(maxIndex)
                 final_Y.append(output)
             return final_Y
+        
         prediction=get_pred(y_pred)
         real=get_real(y_val)
 
-        f1 = F1Score(average='macro')
-        f1.update_state(real,prediction)
-        result = f1.result().numpy()
+        result = scikitf1(prediction,real)
         print(f'{self.name} F1 Score: {result}')
         self.f1_scores.append(result)
+
 
 
 #---------Prediction Functions----------------------------------------------
