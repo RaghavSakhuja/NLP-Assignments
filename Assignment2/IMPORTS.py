@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 
 
 from keras.models import Model
-from keras.layers import Dropout
-from keras_contrib.layers import CRF
+from keras.layers import Dropout,Input
+from tensorflow_addons.layers import CRF
 from keras.layers import Dense
 from keras.layers import Embedding
 from keras.models import Sequential
