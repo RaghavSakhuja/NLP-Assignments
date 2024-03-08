@@ -25,7 +25,7 @@ from sklearn.metrics import f1_score
 from tensorflow.keras.optimizers import AdamW
 from tensorflow_addons.losses import SigmoidFocalCrossEntropy
 from scikeras.wrappers import KerasClassifier
-from sklearn.model_selection
+from sklearn.model_selection import GridSearchCV
 
 def checking(a):
     print("Hello World",a)
