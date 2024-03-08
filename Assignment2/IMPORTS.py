@@ -107,8 +107,8 @@ def draw_loss_graph(model,model_name,f1_scores_train,f1_scores_val):
 --------------------------------------MODELS--------------------------------------
 '''
 
-def save_model(model, embedding, dataset):
-    with open(f'Saved_Models/{dataset}/{model}_{embedding}.pkl', 'wb') as file:
+def save_model(model,model_name, embedding, dataset):
+    with open(f'Saved_Models/{dataset}/{model_name}_{embedding}.pkl', 'wb') as file:
         pickle.dump(model, file)
 
 def load_model(model, embedding, dataset):
@@ -123,17 +123,21 @@ def load_model(model, embedding, dataset):
 
 class F1ScoreCallback(Callback):
 
-    def __init__(self, data, name):
+    def __init__(self, val_data, data):
         super(F1ScoreCallback, self).__init__()
-        self.data = data
-        self.name = name
-        self.f1_scores = [] 
+        self.val_data = val_data
+        self.data=data
+        self.val_f1_scores = [] 
+        self.train_f1_scores = []
 
     
 
     def on_epoch_end(self, epoch, logs=None):
-        x_val, y_val = self.data
-        y_pred = self.model.predict(x_val)
+        x_val, y_val = self.val_data
+        x_data, y_data = self.data
+        y_pred_val = self.model.predict(x_val)
+        y_pred_train = self.model.predict(x_data)
+
         def scikitf1(pred,real):
 
             true_labels_flat = [label for sublist in real for label in sublist]
@@ -142,6 +146,7 @@ class F1ScoreCallback(Callback):
             f1 = f1_score(true_labels_flat, predicted_labels_flat, average='macro')
             return f1
         def get_pred(Y_padded_output):
+                # print(Y_padded_output.shape)
                 final_output=[]
                 for i in range(Y_padded_output.shape[0]):
                     output=[]
@@ -157,6 +162,7 @@ class F1ScoreCallback(Callback):
                 return final_output
 
         def get_real(Y_padded_test):
+            # print(Y_padded_test.shape)
             final_Y=[]
             for i in range(Y_padded_test.shape[0]):
                 output=[]
@@ -171,12 +177,21 @@ class F1ScoreCallback(Callback):
                 final_Y.append(output)
             return final_Y
         
-        prediction=get_pred(y_pred)
-        real=get_real(y_val)
+        # print("here")
+        pred_train=get_pred(y_pred_train)
+        # print(pred_train)
+        real_train=get_real(y_data)
+        # print(real_train)
 
-        result = scikitf1(prediction,real)
-        print(f'{self.name} F1 Score: {result}')
-        self.f1_scores.append(result)
+        pred_val=get_pred(y_pred_val)
+        real_val=get_real(y_val)
+
+        f1_train = scikitf1(pred_train,real_train)
+        f1_val = scikitf1(pred_val,real_val)
+
+        self.val_f1_scores.append(f1_val)
+        self.train_f1_scores.append(f1_train)
+        print(f'Val F1 Score: {f1_val} - Train F1 Score: {f1_train}')
 
 
 
