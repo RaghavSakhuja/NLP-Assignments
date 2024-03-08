@@ -7,20 +7,20 @@ import matplotlib.pyplot as plt
 
 import fasttext
 import fasttext.util
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Dropout,Input
+from keras.models import Model
+from keras.layers import Dropout,Input
 from tensorflow_addons.layers import CRF
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.layers import Embedding
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.callbacks import Callback
-from tensorflow.keras.preprocessing.text import *
-from tensorflow.keras.utils import to_categorical
+from keras.layers import Dense
+from keras.layers import Embedding
+from keras.models import Sequential
+from keras.callbacks import Callback
+from keras.preprocessing.text import *
+from keras.utils import to_categorical
 from gensim.models import KeyedVectors
-from tensorflow.keras.layers import GRU, SimpleRNN, LSTM, Bidirectional
-from tensorflow.keras.layers import TimeDistributed
-from tensorflow.keras.metrics import F1Score, Precision, Recall
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+from keras.layers import GRU, SimpleRNN, LSTM, Bidirectional
+from keras.layers import TimeDistributed
+from keras.metrics import F1Score, Precision, Recall
+from keras.preprocessing.sequence import pad_sequences
 from sklearn.metrics import f1_score
 from tensorflow.keras.optimizers import AdamW
 from tensorflow_addons.losses import SigmoidFocalCrossEntropy
