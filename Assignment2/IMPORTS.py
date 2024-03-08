@@ -24,8 +24,10 @@ from keras.preprocessing.sequence import pad_sequences
 from sklearn.metrics import f1_score
 from tensorflow.keras.optimizers import AdamW
 from tensorflow_addons.losses import SigmoidFocalCrossEntropy
-from scikeras.wrappers import KerasClassifier
 from sklearn.model_selection import GridSearchCV
+from kerastuner.tuners import RandomSearch
+from kerastuner.engine.hyperparameters import HyperParameters
+from tensorflow.keras.optimizers import AdamW, Adam, RMSprop, SGD
 
 def checking(a):
     print("Hello World",a)
