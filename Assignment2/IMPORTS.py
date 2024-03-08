@@ -24,6 +24,8 @@ from keras.preprocessing.sequence import pad_sequences
 from sklearn.metrics import f1_score
 from tensorflow.keras.optimizers import AdamW
 from tensorflow_addons.losses import SigmoidFocalCrossEntropy
+from scikeras.wrappers import KerasClassifier
+from sklearn.model_selection
 
 def checking(a):
     print("Hello World",a)
@@ -111,8 +113,8 @@ def save_model(model,model_name, embedding, dataset):
     with open(f'Saved_Models/{dataset}/{model_name}_{embedding}.pkl', 'wb') as file:
         pickle.dump(model, file)
 
-def load_model(model, embedding, dataset):
-    with open(f'Saved_Models/{dataset}/{model}_{embedding}.pkl', 'rb') as file:
+def load_model(model_name, embedding, dataset):
+    with open(f'Saved_Models/{dataset}/{model_name}_{embedding}.pkl', 'rb') as file:
         loaded_model = pickle.load(file)
     
     return loaded_model
@@ -276,3 +278,4 @@ def scikitf1(pred,real):
     # Compute F1 score
     f1 = f1_score(true_labels_flat, predicted_labels_flat, average='macro')
     return f1
+
