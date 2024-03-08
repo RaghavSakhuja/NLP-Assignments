@@ -24,6 +24,7 @@ from keras.preprocessing.sequence import pad_sequences
 from sklearn.metrics import f1_score
 from tensorflow.keras.optimizers import AdamW
 from tensorflow_addons.losses import SigmoidFocalCrossEntropy
+
 def checking(a):
     print("Hello World",a)
 
@@ -72,7 +73,7 @@ def find_vocab(dataset):
 --------------------------------------GRAPHS--------------------------------------
 '''
 
-def draw_loss_graph(model,title,f1_scores_train,f1_scores_val):
+def draw_loss_graph(model,model_name,f1_scores_train,f1_scores_val):
     train_loss = model.history['loss']
     val_loss = model.history['val_loss']
     x = [i+1 for i in range(len(train_loss))]
@@ -82,29 +83,22 @@ def draw_loss_graph(model,title,f1_scores_train,f1_scores_val):
     fig, axes = plt.subplots(1,2,figsize = (16,5))
     # plt.subplots(axes = (2,1))
     axes[0].plot(x,train_y, color = 'blue')  
-    axes[0].set_title('Training Loss vs Epoch')
-    axes[0].set_xlabel('Epochs')
-    axes[0].set_ylabel('Training Loss')
     
     axes[0].plot(x,val_y, color = 'red') 
-    axes[0].set_title('Validation Loss over Epochs')
+    axes[0].set_title('Loss over Epochs')
     axes[0].set_xlabel('Epoch')
-    axes[0].set_ylabel('Validation Loss')
+    axes[0].set_ylabel('Loss')
 
     axes[1].plot(x,f1_scores_train, color = 'blue')
-    axes[1].set_title('Training F1 Score vs Epoch')
-    axes[1].set_xlabel('Epochs')
-    axes[1].set_ylabel('Training F1 Score')
-
     axes[1].plot(x,f1_scores_val, color = 'red')
-    axes[1].set_title('Validation F1 Score vs Epoch')
+    axes[1].set_title('F1 Score vs Epoch')
     axes[1].set_xlabel('Epochs')
-    axes[1].set_ylabel('Validation F1 Score')
+    axes[1].set_ylabel('F1 Score')
 
     axes[0].legend(['Train','Val'])
     axes[1].legend(['Train','Val'])
     
-    plt.suptitle(title)
+    plt.suptitle(model_name)
 
     
     plt.show()
@@ -113,12 +107,12 @@ def draw_loss_graph(model,title,f1_scores_train,f1_scores_val):
 --------------------------------------MODELS--------------------------------------
 '''
 
-def save_model(model, name, embedding, task,type):
-    with open(f'Saved_Models/{type}/{task}_{name}_{embedding}.pkl', 'wb') as file:
+def save_model(model, embedding, dataset):
+    with open(f'Saved_Models/{dataset}/{model}_{embedding}.pkl', 'wb') as file:
         pickle.dump(model, file)
 
-def load_model(file_name):
-    with open(f'{file_name}', 'rb') as file:
+def load_model(model, embedding, dataset):
+    with open(f'Saved_Models/{dataset}/{model}_{embedding}.pkl', 'rb') as file:
         loaded_model = pickle.load(file)
     
     return loaded_model
@@ -216,3 +210,54 @@ def get_real(Y_padded_test):
             output.append(maxIndex)
         final_Y.append(output)
     return final_Y
+
+def my_f1(y_true, y_pred):
+    
+    # predictions = get_pred(y_pred)
+    # real = get_real(y_true)
+
+    predictions = y_pred
+    real = y_true
+
+    size=len(predictions)
+
+    unique_labels= set()
+
+    for labels in real:
+        unique_labels.update(labels)
+
+    for labels in predictions:
+        unique_labels.update(labels)
+
+    labels_f1=[]
+
+    for labels in unique_labels:
+        tp=0
+        fp=0
+        fn=0
+
+        for i in range(size):
+            l=[]
+                    
+            tp+=sum((p==labels and r==labels) for p,r in zip(predictions[i],real[i]))
+            fp+=sum((p==labels and r!=labels) for p,r in zip(predictions[i],real[i]))
+            fn+=sum((p!=labels and r==labels) for p,r in zip(predictions[i],real[i]))
+
+        
+        precision = tp/(tp+fp) if tp+fp>0 else 0
+        recall = tp/(tp+fn) if tp+fn>0 else 0
+
+        f1=2*((precision*recall)/(precision+recall)) if precision+recall>0 else 0
+
+        labels_f1.append(f1)
+        print(f1,unique_labels)
+    macro_f1 = sum(labels_f1)/len(unique_labels)
+    return macro_f1
+
+def scikitf1(pred,real):
+
+    true_labels_flat = [label for sublist in real for label in sublist]
+    predicted_labels_flat = [label for sublist in pred for label in sublist]
+    # Compute F1 score
+    f1 = f1_score(true_labels_flat, predicted_labels_flat, average='macro')
+    return f1
