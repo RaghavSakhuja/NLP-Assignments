@@ -2,10 +2,10 @@ import json
 
 input=json.load(open("NER_TEST_JUDGEMENT.json"))
 output=json.load(open("processed/NER_test.json"))
-def check(labels):
+def check(marked,actual):
     cnt=0
-    for i in labels:
-        if "B_" in i:
+    for i in range(len(marked)):
+        if marked[i]==actual[i]:
             cnt+=1
             # return False
     return cnt
@@ -15,7 +15,8 @@ cnt2=0
 while(i<len(input)):
     values=input[i]['annotations'][0]['result']
     if input[i]['id'] in output:
-        values2=output[input[i]['id']]['labels']
+        marked=output[input[i]['id']]['labels']
+        
         text=input[i]['data']['text'].split(" ")
         # if(check(values2)and values!=[]):'
         if(check(values2)!=len(values)):
